@@ -3,8 +3,8 @@ import java.util.Scanner;
 import com.book.*;
 import com.book.exception.InvalidBookException;
 
-public class BookUtil {
-    public Book getbookobj() throws InvalidBookException {
+public class BookUtil  {
+    public Book getbookobj(){
 		@SuppressWarnings("resource")
 		Scanner sc=new Scanner(System.in);
 		System.out.print("BookId:");
@@ -17,7 +17,14 @@ public class BookUtil {
 		String Category=sc.nextLine();
 		System.out.print("Price:");
         Float Price=sc.nextFloat();
-		Book b1=new Book(BookId,Title,Author,Category,Price);
+		Book b1 = null;
+		try {
+			b1 = new Book(BookId,Title,Author,Category,Price);
+		}
+		catch (InvalidBookException e) {
+			System.out.println("Exception is :\n"+e+".....!!!");
+	    	System.exit(0);
+		}
 		return b1;
 	}
     public String getString() {
@@ -26,11 +33,11 @@ public class BookUtil {
     	String val=sc.nextLine();
     	return val;
     }
-	public static void main(String[] args) throws InvalidBookException {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BookUtil butil=new BookUtil();
 		BookStore obj=new BookStore();
-		for(int i=0 ;i<3;i++) {
+		for(int i=0 ;i<1;i++) {
 			System.out.print("Fill Details for Book No."+(i+1)+":\n");
 			obj.addBook( butil.getbookobj());
 			//sc.close();
