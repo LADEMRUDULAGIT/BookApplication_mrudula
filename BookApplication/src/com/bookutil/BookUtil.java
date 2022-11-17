@@ -37,7 +37,7 @@ public class BookUtil  {
 		// TODO Auto-generated method stub
 		BookUtil butil=new BookUtil();
 		BookStore obj=new BookStore();
-		for(int i=0 ;i<1;i++) {
+		for(int i=0 ;i<3;i++) {
 			System.out.print("Fill Details for Book No."+(i+1)+":\n");
 			obj.addBook( butil.getbookobj());
 			//sc.close();
