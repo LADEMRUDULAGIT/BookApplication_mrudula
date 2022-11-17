@@ -40,7 +40,12 @@ public String getTitle() {
 public void setTitle(String title) {
 	this.title = title;
 }
-public Book(String bookId,String title,String author,String category,float price) throws InvalidBookException{
+public Book(String bookId,String title,String author,String category,float price)throws InvalidBookException{
+	
+		validation(bookId,title,author,category,price);
+	
+}
+public void validation(String bookId,String title,String author,String category,float price)throws InvalidBookException {
 	String[] categories= {"Science", "Fiction", "Technology" ,"Others"};
 	List<String>categorylist=new ArrayList<String>();
 	for(String category1:categories ) {
@@ -58,10 +63,13 @@ public Book(String bookId,String title,String author,String category,float price
 			setAuthor(author);
 	}
 	else {
-		throw new InvalidBookException(exec);
+		try {
+			throw new InvalidBookException(exec);
+		}
+	    catch(InvalidBookException s) {
+	    	System.out.println("Exception is :\n"+s+".....!!!");
+	    	System.exit(0);	    	
+	    }
 	}
-		
-	
 }
-
 }
